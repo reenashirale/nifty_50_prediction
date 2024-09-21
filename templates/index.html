@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Data</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .dropdown input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100%;
+            border: 1px solid #ccc;
+            z-index: 1;
+            max-height: 200px;
+            overflow-y: auto;
+            border-radius: 4px;
+        }
+
+        .dropdown-content div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-content div:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nifty 50 Stock Price Prediction</h1>
+        <form method="POST", action="/">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Open</th>
+                        <th>High</th>
+                        <th>Low</th>
+                        <th>LTP</th>
+                        <th>Change</th>
+                        <th>Volume (lacs)</th>
+                        <th>52w High</th>
+                        <th>52w Low</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="dropdown">
+                                <input name="symbol" type="text" id="symbolSearch" onkeyup="filterSymbols()" placeholder="Search Symbol">
+                                <div id="dropdownContent" class="dropdown-content">
+                                    <div data-value="1">ADANIPORTS</div>
+                                    <div data-value="2">ASIANPAINT</div>
+                                    <div data-value="3">AXISBANK</div>
+                                    <div data-value="4">BAJAJ-AUTO</div>
+                                    <div data-value="5">BAJAJFINSV</div>
+                                    <div data-value="6">BAJFINANCE</div>
+                                    <div data-value="7">BHARTIARTL</div>
+                                    <div data-value="8">BPCL</div>
+                                    <div data-value="9">BRITANNIA</div>
+                                    <div data-value="10">CIPLA</div>
+                                    <div data-value="11">COALINDIA</div>
+                                    <div data-value="12">DIVISLAB</div>
+                                    <div data-value="13">DRREDDY</div>
+                                    <div data-value="14">EICHERMOT</div>
+                                    <div data-value="15">GRASIM</div>
+                                    <div data-value="16">HCLTECH</div>
+                                    <div data-value="17">HDFC</div>
+                                    <div data-value="18">HDFCBANK</div>
+                                    <div data-value="19">HDFCLIFE</div>
+                                    <div data-value="20">HEROMOTOCO</div>
+                                    <div data-value="21">HINDALCO</div>
+                                    <div data-value="22">HINDUNILVR</div>
+                                    <div data-value="23">ICICIBANK</div>
+                                    <div data-value="24">INDUSINDBK</div>
+                                    <div data-value="25">INFY</div>
+                                    <div data-value="26">IOC</div>
+                                    <div data-value="27">ITC</div>
+                                    <div data-value="28">JSWSTEEL</div>
+                                    <div data-value="29">KOTAKBANK</div>
+                                    <div data-value="30">LT</div>
+                                    <div data-value="31">M&M</div>
+                                    <div data-value="32">MARUTI</div>
+                                    <div data-value="33">NESTLEIND</div>
+                                    <div data-value="34">NTPC</div>
+                                    <div data-value="35">ONGC</div>
+                                    <div data-value="36">POWERGRID</div>
+                                    <div data-value="37">RELIANCE</div>
+                                    <div data-value="38">SBILIFE</div>
+                                    <div data-value="39">SBIN</div>
+                                    <div data-value="40">SHREECEM</div>
+                                    <div data-value="41">SUNPHARMA</div>
+                                    <div data-value="42">TATACONSUM</div>
+                                    <div data-value="43">TATAMOTORS</div>
+                                    <div data-value="44">TATASTEEL</div>
+                                    <div data-value="45">TCS</div>
+                                    <div data-value="46">TECHM</div>
+                                    <div data-value="47">TITAN</div>
+                                    <div data-value="48">ULTRACEMCO</div>
+                                    <div data-value="49">UPL</div>
+                                    <div data-value="50">WIPRO</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><input type="number" name="open" placeholder="Open Price"></td>
+                        <td><input type="number" name="high" placeholder="High Price"></td>
+                        <td><input type="number" name="low" placeholder="Low Price"></td>
+                        <td><input type="number" name="ltp" placeholder="Last Traded Price"></td>
+                        <td><input type="text" name="change" placeholder="Change (%)"></td>
+                        <td><input type="number" name="volume" placeholder="Volume (lacs)"></td>
+                        <td><input type="number" name="high52" placeholder="52w High"></td>
+                        <td><input type="number" name="low52" placeholder="52w Low"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit">Submit</button>
+        </form>       
+        {% if closing_price %}
+        <h3 class="text-center"> Stock Price Prediction Is : {{closing_price}}</h3>
+        {% endif %}
+    </div>
+
+    <script>
+        const dropdownContent = document.getElementById("dropdownContent");
+        const input = document.getElementById("symbolSearch");
+
+        // Show dropdown on focus
+        input.addEventListener("focus", () => {
+            dropdownContent.style.display = "block";
+        });
+
+        // Hide dropdown on click outside
+        window.addEventListener("click", (event) => {
+            if (!event.target.matches('#symbolSearch')) {
+                dropdownContent.style.display = "none";
+            }
+        });
+
+        // Filter symbols based on input
+        function filterSymbols() {
+            const filter = input.value.toUpperCase();
+            const items = dropdownContent.getElementsByTagName("div");
+
+            for (let i = 0; i < items.length; i++) {
+                const txtValue = items[i].textContent || items[i].innerText;
+                items[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+            }
+        }
+
+        // Select symbol and set input value
+        dropdownContent.addEventListener("click", (event) => {
+            if (event.target.matches('div')) {
+                input.value = event.target.innerText;
+                dropdownContent.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
