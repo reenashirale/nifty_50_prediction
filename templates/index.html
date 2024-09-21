@@ -45,7 +45,7 @@
 <body>
     <div class="container">
         <h1>Nifty 50 Stock Price Prediction</h1>
-        <form method="POST", action="/">
+        <form method="POST">
             <table>
                 <thead>
                     <tr>
@@ -64,7 +64,7 @@
                     <tr>
                         <td>
                             <div class="dropdown">
-                                <input name="symbol" type="text" id="symbolSearch" onkeyup="filterSymbols()" placeholder="Search Symbol">
+                                <input required name="symbol" type="text" id="symbolSearch" onkeyup="filterSymbols()" placeholder="Search Symbol">
                                 <div id="dropdownContent" class="dropdown-content">
                                     <div data-value="1">ADANIPORTS</div>
                                     <div data-value="2">ASIANPAINT</div>
@@ -119,14 +119,14 @@
                                 </div>
                             </div>
                         </td>
-                        <td><input type="number" name="open" placeholder="Open Price"></td>
-                        <td><input type="number" name="high" placeholder="High Price"></td>
-                        <td><input type="number" name="low" placeholder="Low Price"></td>
-                        <td><input type="number" name="ltp" placeholder="Last Traded Price"></td>
-                        <td><input type="text" name="change" placeholder="Change (%)"></td>
-                        <td><input type="number" name="volume" placeholder="Volume (lacs)"></td>
-                        <td><input type="number" name="high52" placeholder="52w High"></td>
-                        <td><input type="number" name="low52" placeholder="52w Low"></td>
+                        <td><input type="number" name="open" placeholder="Open Price" required></td>
+                        <td><input type="number" name="high" placeholder="High Price" required></td>
+                        <td><input type="number" name="low" placeholder="Low Price" required></td>
+                        <td><input type="number" name="ltp" placeholder="Last Traded Price" required></td>
+                        <td><input type="text" name="change" placeholder="Change (%)" required></td>
+                        <td><input type="number" name="volume" placeholder="Volume (lacs)" required></td>
+                        <td><input type="number" name="high52" placeholder="52w High" required></td>
+                        <td><input type="number" name="low52" placeholder="52w Low" required></td>
                     </tr>
                 </tbody>
             </table>
