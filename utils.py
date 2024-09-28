@@ -12,6 +12,7 @@ class StockPriceClass():
 
     def load_data(self):
         with open(MODEL_FILE_NAME, 'rb') as f:
+            print(MODEL_FILE_NAME)
             self.model = pickle.load(f)
 
         with open(JSON_COLUMNS_FILE_NAME, 'r') as f:
