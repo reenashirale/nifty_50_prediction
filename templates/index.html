@@ -45,7 +45,7 @@
 <body>
     <div class="container">
         <h1>Nifty 50 Stock Price Prediction</h1>
-        <form method="POST">
+        <form action="/" method="POST">
             <table>
                 <thead>
                     <tr>
@@ -64,69 +64,69 @@
                     <tr>
                         <td>
                             <div class="dropdown">
-                                <input value='{{ data.symbol }}'  name="symbol" type="text" id="symbolSearch" onkeyup="filterSymbols()" placeholder="Search Symbol" required>
+                                <input name="symbol" type="text" id="symbolSearch" onkeyup="filterSymbols()" placeholder="Search Symbol" required>
                                 <div id="dropdownContent" class="dropdown-content">
-                                    <div data-value="1">ADANIPORTS</div>
-                                    <div data-value="2">ASIANPAINT</div>
-                                    <div data-value="3">AXISBANK</div>
-                                    <div data-value="4">BAJAJ-AUTO</div>
-                                    <div data-value="5">BAJAJFINSV</div>
-                                    <div data-value="6">BAJFINANCE</div>
-                                    <div data-value="7">BHARTIARTL</div>
-                                    <div data-value="8">BPCL</div>
-                                    <div data-value="9">BRITANNIA</div>
-                                    <div data-value="10">CIPLA</div>
-                                    <div data-value="11">COALINDIA</div>
-                                    <div data-value="12">DIVISLAB</div>
-                                    <div data-value="13">DRREDDY</div>
-                                    <div data-value="14">EICHERMOT</div>
-                                    <div data-value="15">GRASIM</div>
-                                    <div data-value="16">HCLTECH</div>
-                                    <div data-value="17">HDFC</div>
-                                    <div data-value="18">HDFCBANK</div>
-                                    <div data-value="19">HDFCLIFE</div>
-                                    <div data-value="20">HEROMOTOCO</div>
-                                    <div data-value="21">HINDALCO</div>
-                                    <div data-value="22">HINDUNILVR</div>
-                                    <div data-value="23">ICICIBANK</div>
-                                    <div data-value="24">INDUSINDBK</div>
-                                    <div data-value="25">INFY</div>
-                                    <div data-value="26">IOC</div>
-                                    <div data-value="27">ITC</div>
-                                    <div data-value="28">JSWSTEEL</div>
-                                    <div data-value="29">KOTAKBANK</div>
-                                    <div data-value="30">LT</div>
-                                    <div data-value="31">M&M</div>
-                                    <div data-value="32">MARUTI</div>
-                                    <div data-value="33">NESTLEIND</div>
-                                    <div data-value="34">NTPC</div>
-                                    <div data-value="35">ONGC</div>
-                                    <div data-value="36">POWERGRID</div>
-                                    <div data-value="37">RELIANCE</div>
-                                    <div data-value="38">SBILIFE</div>
-                                    <div data-value="39">SBIN</div>
-                                    <div data-value="40">SHREECEM</div>
-                                    <div data-value="41">SUNPHARMA</div>
-                                    <div data-value="42">TATACONSUM</div>
-                                    <div data-value="43">TATAMOTORS</div>
-                                    <div data-value="44">TATASTEEL</div>
-                                    <div data-value="45">TCS</div>
-                                    <div data-value="46">TECHM</div>
-                                    <div data-value="47">TITAN</div>
-                                    <div data-value="48">ULTRACEMCO</div>
-                                    <div data-value="49">UPL</div>
-                                    <div data-value="50">WIPRO</div>
+                                    <div data-value="0">ADANIPORTS</div>
+                                    <div data-value="1">ASIANPAINT</div>
+                                    <div data-value="2">AXISBANK</div>
+                                    <div data-value="3">BAJAJ-AUTO</div>
+                                    <div data-value="4">BAJAJFINSV</div>
+                                    <div data-value="5">BAJFINANCE</div>
+                                    <div data-value="6">BHARTIARTL</div>
+                                    <div data-value="7">BPCL</div>
+                                    <div data-value="8">BRITANNIA</div>
+                                    <div data-value="9">CIPLA</div>
+                                    <div data-value="10">COALINDIA</div>
+                                    <div data-value="11">DIVISLAB</div>
+                                    <div data-value="12">DRREDDY</div>
+                                    <div data-value="13">EICHERMOT</div>
+                                    <div data-value="14">GRASIM</div>
+                                    <div data-value="15">HCLTECH</div>
+                                    <div data-value="16">HDFC</div>
+                                    <div data-value="17">HDFCBANK</div>
+                                    <div data-value="18">HDFCLIFE</div>
+                                    <div data-value="19">HEROMOTOCO</div>
+                                    <div data-value="20">HINDALCO</div>
+                                    <div data-value="21">HINDUNILVR</div>
+                                    <div data-value="22">ICICIBANK</div>
+                                    <div data-value="23">INDUSINDBK</div>
+                                    <div data-value="24">INFY</div>
+                                    <div data-value="25">IOC</div>
+                                    <div data-value="26">ITC</div>
+                                    <div data-value="27">JSWSTEEL</div>
+                                    <div data-value="28">KOTAKBANK</div>
+                                    <div data-value="29">LT</div>
+                                    <div data-value="30">M&M</div>
+                                    <div data-value="31">MARUTI</div>
+                                    <div data-value="32">NESTLEIND</div>
+                                    <div data-value="33">NTPC</div>
+                                    <div data-value="34">ONGC</div>
+                                    <div data-value="35">POWERGRID</div>
+                                    <div data-value="36">RELIANCE</div>
+                                    <div data-value="37">SBILIFE</div>
+                                    <div data-value="38">SBIN</div>
+                                    <div data-value="39">SHREECEM</div>
+                                    <div data-value="40">SUNPHARMA</div>
+                                    <div data-value="41">TATACONSUM</div>
+                                    <div data-value="42">TATAMOTORS</div>
+                                    <div data-value="43">TATASTEEL</div>
+                                    <div data-value="44">TCS</div>
+                                    <div data-value="45">TECHM</div>
+                                    <div data-value="46">TITAN</div>
+                                    <div data-value="47">ULTRACEMCO</div>
+                                    <div data-value="48">UPL</div>
+                                    <div data-value="49">WIPRO</div>
                                 </div>
                             </div>
                         </td>
-                        <td><input value='{{ data.open }}' step=".01" type="number" name="open" placeholder="Open Price" required></td>
-                        <td><input value='{{ data.high }}' step=".01"  type="number" name="high" placeholder="High Price" required></td>
-                        <td><input value='{{ data.low }}' step=".01"  type="number" name="low" placeholder="Low Price" required></td>
-                        <td><input value='{{ data.ltp }}'  step=".01" type="number" name="ltp" placeholder="Last Traded Price" required></td>
-                        <td><input value='{{ data.change }}' step=".01"  type="text" name="change" placeholder="Change (%)" required></td>
-                        <td><input value='{{ data.volume }}' step=".01"  type="number" name="volume" placeholder="Volume (lacs)" required></td>
-                        <td><input value='{{ data.high52 }}' step=".01"  type="number" name="high52" placeholder="52w High" required></td>
-                        <td><input value='{{ data.low52 }}'  step=".01" type="number" name="low52" placeholder="52w Low" required></td>
+                        <td><input step=".01" type="number" name="open" placeholder="Open Price" required></td>
+                        <td><input step=".01"  type="number" name="high" placeholder="High Price" required></td>
+                        <td><input step=".01"  type="number" name="low" placeholder="Low Price" required></td>
+                        <td><input step=".01" type="number" name="ltp" placeholder="Last Traded Price" required></td>
+                        <td><input step=".01"  type="text" name="change" placeholder="Change (%)" required></td>
+                        <td><input step=".01"  type="number" name="volume" placeholder="Volume (lacs)" required></td>
+                        <td><input step=".01"  type="number" name="high52" placeholder="52w High" required></td>
+                        <td><input step=".01" type="number" name="low52" placeholder="52w Low" required></td>
                     </tr>
                 </tbody>
             </table>

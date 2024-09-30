@@ -12,7 +12,6 @@ class StockPriceClass():
 
     def load_data(self):
         with open(MODEL_FILE_NAME, 'rb') as f:
-            print(MODEL_FILE_NAME)
             self.model = pickle.load(f)
 
         with open(JSON_COLUMNS_FILE_NAME, 'r') as f:
@@ -24,14 +23,23 @@ class StockPriceClass():
         data = np.zeros(col_length)
         symbol = self.columns['symbols'][symbol]
         data[0] = symbol
-        data[1] = open
-        data[2] = high
-        data[3] = low
-        data[4] = ltp
-        data[5] = change
-        data[6] = volume
-        data[7] = high52
-        data[8] = low52
+        # data[1] = eval(open)**self.columns['lambda']['Open']
+        # data[2] = eval(high)**self.columns['lambda']['High']
+        # data[3] = eval(low)**self.columns['lambda']['Low']
+        # data[4] = eval(ltp)**self.columns['lambda']['LTP']
+        # data[5] = eval(change)**self.columns['lambda']['Chng']
+        # data[6] = eval(volume)**self.columns['lambda']['Volume (lacs)']
+        # data[7] = eval(high52)**self.columns['lambda']['52w H']
+        # data[8] = eval(low52)**self.columns['lambda']['52w L']
+        data[1] = eval(open)
+        data[2] = eval(high)
+        data[3] = eval(low)
+        data[4] = eval(ltp)
+        data[5] = eval(change)
+        data[6] = eval(volume)
+        data[7] = eval(high52)
+        data[8] = eval(low52)
+        print(data)
         predict_closing_price = self.model.predict([data])
         print(predict_closing_price)
         return round(predict_closing_price[0],2)
